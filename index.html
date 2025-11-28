@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Daimao Games – Casino virtuel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <div class="brand">
+        <div class="brand-logo">DG</div>
+        <div class="brand-text">
+          <div class="brand-name">Daimao Games</div>
+          <div class="brand-tagline" data-i18n-key="header_tagline"></div>
+        </div>
+      </div>
+      <div class="header-right">
+        <button id="lang-toggle" class="lang-toggle">
+          🌐 <span data-lang-label>FR / EN</span>
+        </button>
+        <div class="credit-display">
+          <span class="credit-label" data-i18n-key="credits_label"></span>
+          <span class="credit-value" data-credits>0.00</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <h1 class="page-title" data-i18n-key="home_title"></h1>
+    <p class="page-subtitle" data-i18n-key="home_subtitle"></p>
+
+    <section class="game-grid">
+      <!-- Blackjack -->
+      <article class="game-card">
+        <div class="game-card-tag" data-i18n-key="home_tag_cards"></div>
+        <div class="game-card-title" data-i18n-key="home_blackjack_title"></div>
+        <p class="game-card-body" data-i18n-key="home_blackjack_desc"></p>
+        <div class="game-card-footer">
+          <a href="blackjack.html" class="btn">
+            <span data-i18n-key="home_cta_play"></span> 🃏
+          </a>
+        </div>
+      </article>
+
+      <!-- Roulette -->
+      <article class="game-card">
+        <div class="game-card-tag" data-i18n-key="home_tag_table"></div>
+        <div class="game-card-title" data-i18n-key="home_roulette_title"></div>
+        <p class="game-card-body" data-i18n-key="home_roulette_desc"></p>
+        <div class="game-card-footer">
+          <a href="roulette.html" class="btn">
+            <span data-i18n-key="home_cta_play"></span> 🎯
+          </a>
+        </div>
+      </article>
+
+      <!-- Slots -->
+      <article class="game-card">
+        <div class="game-card-tag" data-i18n-key="home_tag_slots"></div>
+        <div class="game-card-title" data-i18n-key="home_slots_title"></div>
+        <p class="game-card-body" data-i18n-key="home_slots_desc"></p>
+        <div class="game-card-footer">
+          <a href="slots.html" class="btn">
+            <span data-i18n-key="home_cta_play"></span> 🎰
+          </a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Daimao Games · 2025
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
