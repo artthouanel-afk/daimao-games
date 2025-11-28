@@ -8,8 +8,12 @@ const MAX_BET = 10000;
 
 function getCredits() {
   const stored = localStorage.getItem(CREDIT_KEY);
-  const val = stored ? parseFloat(stored) : 0;
-  return isNaN(val) ? 0 : val;
+  if (stored === null) {
+    // Première visite → 10 crédits
+    return 10;
+  }
+  const val = parseFloat(stored);
+  return isNaN(val) ? 10 : val;
 }
 
 function setCredits(value) {
@@ -30,42 +34,42 @@ function updateCreditDisplay() {
 const translations = {
   fr: {
     home_title: "Bienvenue sur Daimao Games",
-    home_subtitle: "Casino virtuel, crédits virtuels. Amuse-toi avec la roulette, le blackjack et les machines à sous.",
+    home_subtitle: "Jeux de casino en ligne entre amis. Amusez-vous avec la roulette, le blackjack et les machines à sous.",
     home_blackjack_title: "Blackjack",
-    home_blackjack_desc: "Affronte le croupier dans une version simplifiée, pensée pour les débutants.",
+    home_blackjack_desc: "Affrontez le croupier dans une version simple, fluide et animée.",
     home_roulette_title: "Roulette européenne",
-    home_roulette_desc: "Mises sur rouge/noir, pair/impair, manque/passe ou un numéro direct.",
+    home_roulette_desc: "Placez vos mises sur la table, regardez la roue tourner et voyez où la bille s’arrête.",
     home_slots_title: "Machines à sous",
-    home_slots_desc: "Choisis ton thème : fruits classiques, manga ou néon/diamants.",
+    home_slots_desc: "Tirez la manette, regardez les rouleaux tourner et espérez l’alignement parfait.",
     home_cta_play: "Jouer",
     home_tag_cards: "Jeu de cartes",
     home_tag_table: "Jeu de table",
     home_tag_slots: "Machine à sous",
     page_blackjack_title: "Blackjack",
-    page_blackjack_subtitle: "Version simplifiée, avec une légère chance bonus en ta faveur.",
+    page_blackjack_subtitle: "Distribution animée, règles simples, et un léger avantage pour vous.",
     page_roulette_title: "Roulette européenne",
-    page_roulette_subtitle: "Place plusieurs mises, lance la roue, et vois jusqu’où vont tes crédits.",
+    page_roulette_subtitle: "Table de mises interactive, roue animée et plusieurs mises possibles à chaque tour.",
     page_slots_title: "Machines à sous",
-    page_slots_subtitle: "Trois rouleaux, une ligne gagnante et trois thèmes différents.",
+    page_slots_subtitle: "Trois rouleaux, une ligne gagnante et plusieurs thèmes au choix.",
     label_bet_amount: "Mise",
     placeholder_bet_amount: "Ex : 10",
     btn_deal: "Distribuer",
     btn_hit: "Carte (+)",
     btn_stand: "Rester",
     blackjack_dealer: "Croupier",
-    blackjack_player: "Toi",
-    status_place_bet: "Choisis ta mise puis distribue.",
+    blackjack_player: "Vous",
+    status_place_bet: "Choisissez votre mise puis cliquez sur « Distribuer ».",
     status_new_round: "Nouvelle manche.",
-    status_blackjack_win: "Blackjack ! Victoire.",
-    status_win_generic: "Victoire !",
-    status_loss_generic: "Perdu.",
+    status_blackjack_win: "Blackjack ! Vous gagnez.",
+    status_win_generic: "Vous gagnez.",
+    status_loss_generic: "Vous perdez.",
     status_push: "Égalité.",
     label_bet_type: "Type de mise",
-    label_bet_number: "Numéro (0-36)",
+    label_bet_number: "Numéro (0–36)",
     btn_add_bet: "Ajouter la mise",
     btn_spin: "Lancer la roue",
     roulette_result: "Résultat",
-    roulette_no_bet: "Ajoute au moins une mise avant de lancer.",
+    roulette_no_bet: "Ajoutez au moins une mise avant de lancer.",
     slots_theme_label: "Thème",
     slots_theme_fruits: "Fruits",
     slots_theme_manga: "Manga",
@@ -73,28 +77,28 @@ const translations = {
     btn_spin_slots: "Lancer",
     status_insufficient_credits: "Crédits insuffisants.",
     status_invalid_bet: `Mise invalide (min ${MIN_BET}, max ${MAX_BET}).`,
-    header_tagline: "Crédits virtuels, plaisir réel.",
+    header_tagline: "Daimao Games · Casino entre amis",
     credits_label: "Crédits"
   },
   en: {
     home_title: "Welcome to Daimao Games",
-    home_subtitle: "Virtual casino, virtual credits. Enjoy roulette, blackjack and slot machines.",
+    home_subtitle: "Casino-style games to enjoy with your friends: roulette, blackjack and slots.",
     home_blackjack_title: "Blackjack",
-    home_blackjack_desc: "Face the dealer in a simplified version designed for beginners.",
+    home_blackjack_desc: "Face the dealer in a simple, fluid and animated version.",
     home_roulette_title: "European Roulette",
-    home_roulette_desc: "Bet on red/black, odd/even, low/high or straight numbers.",
+    home_roulette_desc: "Place your bets on the table, watch the wheel spin and see where the ball lands.",
     home_slots_title: "Slot Machines",
-    home_slots_desc: "Pick your theme: classic fruits, manga or neon/diamonds.",
+    home_slots_desc: "Pull the lever, watch the reels spin and hope for the perfect line.",
     home_cta_play: "Play",
     home_tag_cards: "Card game",
     home_tag_table: "Table game",
     home_tag_slots: "Slot machine",
     page_blackjack_title: "Blackjack",
-    page_blackjack_subtitle: "Simplified version, with a slight extra win chance in your favor.",
+    page_blackjack_subtitle: "Animated dealing, simple rules and a slight edge in your favor.",
     page_roulette_title: "European Roulette",
-    page_roulette_subtitle: "Place multiple bets, spin the wheel, and see how far your credits go.",
+    page_roulette_subtitle: "Interactive betting table, animated wheel and multiple bets per spin.",
     page_slots_title: "Slot Machines",
-    page_slots_subtitle: "Three reels, one payline and three different themes.",
+    page_slots_subtitle: "Three reels, one payline and multiple themes to choose from.",
     label_bet_amount: "Bet",
     placeholder_bet_amount: "e.g. 10",
     btn_deal: "Deal",
@@ -102,14 +106,14 @@ const translations = {
     btn_stand: "Stand",
     blackjack_dealer: "Dealer",
     blackjack_player: "You",
-    status_place_bet: "Choose your bet and deal.",
+    status_place_bet: "Choose your bet then click “Deal”.",
     status_new_round: "New round.",
     status_blackjack_win: "Blackjack! You win.",
-    status_win_generic: "Win!",
-    status_loss_generic: "Lost.",
+    status_win_generic: "You win.",
+    status_loss_generic: "You lose.",
     status_push: "Push.",
     label_bet_type: "Bet type",
-    label_bet_number: "Number (0-36)",
+    label_bet_number: "Number (0–36)",
     btn_add_bet: "Add bet",
     btn_spin: "Spin the wheel",
     roulette_result: "Result",
@@ -121,7 +125,7 @@ const translations = {
     btn_spin_slots: "Spin",
     status_insufficient_credits: "Not enough credits.",
     status_invalid_bet: `Invalid bet (min ${MIN_BET}, max ${MAX_BET}).`,
-    header_tagline: "Virtual credits, real fun.",
+    header_tagline: "Daimao Games · Friends casino",
     credits_label: "Credits"
   }
 };
@@ -239,7 +243,13 @@ function validateBetAmount(amount) {
 // --- INIT COMMON ---
 
 document.addEventListener('DOMContentLoaded', () => {
-  updateCreditDisplay();
+  // première visite → si aucune valeur, on fixe 10
+  if (localStorage.getItem(CREDIT_KEY) === null) {
+    setCredits(10);
+  } else {
+    updateCreditDisplay();
+  }
+
   applyTranslations();
   updateLangToggle();
 
@@ -256,3 +266,4 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof initRoulette === 'function') initRoulette();
   if (typeof initSlots === 'function') initSlots();
 });
+
